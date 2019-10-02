@@ -35,5 +35,4 @@ This includes understanding
  - Some background in alpha and beta-diversity analyses
  - Taxonomy assignment
  - qiime2 basics, importing Artifacts, viewing visualizations via qiime2 view.
- - Background in statistics and linear algebra will help - but we won't assume you have this background.
 
