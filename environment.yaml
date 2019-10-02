@@ -328,5 +328,6 @@ dependencies:
 - mmvec
 - songbird
 - deicode
+- ipymd
 - pip:
   - qurro
