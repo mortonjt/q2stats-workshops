@@ -2,18 +2,16 @@
 
 ## Motivation
 
-What is beta-diversity and why is it important?
+
+## Robust Aitchison PCA
+
+See this [page](https://github.com/biocore/DEICODE/blob/master/ipynb/tutorials/moving-pictures.md) for more details.
 
 
-## Compositional effects
+## Other tools
+It is worth noting that similar compositional factorization techniques have been developed previously see references below for more details.
 
-Describe why Aitchison distance maybe better sometimes
-Discuss problem with zeros
+## References
+Martino, Cameron, et al. "A Novel Sparse Compositional Technique Reveals Microbial Perturbations." MSystems 4.1 (2019): e00016-19.
 
-### Robust Aitchison PCA
-
-Run the byrd dataset
-Visualize in emperor
-Visualize in qurro
-
-Shout out to alr factorization technique
+Fisher, Charles K., Thierry Mora, and Aleksandra M. Walczak. "Variable habitat conditions drive species covariation in the human microbiota." PLoS computational biology 13.4 (2017): e1005435.
