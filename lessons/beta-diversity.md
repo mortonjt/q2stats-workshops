@@ -3,9 +3,22 @@
 ## Motivation
 
 
+## Setup
+We'll be using the moving picture tutorial data for demonstration.  Those files can be downloaded using the following commands.
+
+Download Feature Table
+`wget https://docs.qiime2.org/2019.7/data/tutorials/moving-pictures/table.qza`
+
+Download Sample metadata
+`wget https://data.qiime2.org/2019.7/tutorials/moving-pictures/sample_metadata.tsv`
+
+Download Taxonomy
+`wget https://docs.qiime2.org/2019.7/data/tutorials/moving-pictures/taxonomy.qza`
+
+
 ## Robust Aitchison PCA
 
-See this [page](https://github.com/biocore/DEICODE/blob/master/ipynb/tutorials/moving-pictures.md) for more details.
+See this [page](https://github.com/biocore/DEICODE/blob/master/ipynb/tutorials/moving-pictures.md#example) for more details.
 
 
 ## Other tools
