@@ -325,6 +325,9 @@ dependencies:
 - zipp=0.5.1
 - zlib=1.2.11
 - zstd=1.4.0
+- tensorflow-1.14.0
+- tensorflow-base-1.14.0
+- tensorflow-estimator-1.14.0
 - mmvec
 - songbird
 - deicode
