@@ -332,4 +332,4 @@ dependencies:
 - songbird=0.9.0
 - deicode=0.2.3
 - pip:
-  - qurro=0.4.0
+  - qurro==0.4.0

@@ -1,5 +1,8 @@
 # q2stats-workshops
 
+https://mybinder.org/v2/gh/mortonjt/q2stats-workshops/4b239a50be3553248eb9d6823cf227d6393e958b
+
+
 This repository is designed as a resource for microbial ecologist for a focus on statistical methodologies available in qiime2.
 
 Much of the structure of this repository is inspired by [An-Introduction-To-Applied-Bioinformatics](https://github.com/applied-bioinformatics/An-Introduction-To-Applied-Bioinformatics).
@@ -35,4 +38,3 @@ This includes understanding
  - Some background in alpha and beta-diversity analyses
  - Taxonomy assignment
  - qiime2 basics, importing Artifacts, viewing visualizations via qiime2 view.
-
