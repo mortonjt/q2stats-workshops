@@ -7,9 +7,10 @@ This repository is designed as a resource for microbial ecologist for a focus on
 
 Much of the structure of this repository is inspired by [An-Introduction-To-Applied-Bioinformatics](https://github.com/applied-bioinformatics/An-Introduction-To-Applied-Bioinformatics).
 
-# Installation
+# How should I run this?
+These analyses are designed to be read and interactively run.  To run these notebooks, click on the red Binder link above and navigate to the terminal option under the pulldown on the upper right corner.  The tutorial commands can be directly executed in the terminal.
 
-These analyses are designed to be read and interactively run.  To run these notebooks, click on the red Binder link above and navigate to the lessons tab.
+# Local installation
 These notebooks can also be downloaded and run locally.  To do that run the following commands
 
 ```
@@ -22,6 +23,7 @@ source activate workshop-env
 The notebooks then can be run via
 
 ```
+pip install ipymd
 ipymd --from markdown --to notebook lessons/*.md
 jupyter notebook
 ```
