@@ -1,6 +1,6 @@
 # q2stats-workshops
 
-https://mybinder.org/v2/gh/mortonjt/q2stats-workshops/4b239a50be3553248eb9d6823cf227d6393e958b
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mortonjt/q2stats-workshops/4b239a50be3553248eb9d6823cf227d6393e958b)
 
 
 This repository is designed as a resource for microbial ecologist for a focus on statistical methodologies available in qiime2.
