@@ -34,47 +34,52 @@ Here, the total biomass does not influence the ordering of the log fold change c
 
 More information these concepts can be found in our paper [here](https://www.nature.com/articles/s41467-019-10656-5)
 
-## 2. Differential abundance workflow
-
 
 In this tutorial, we will first demonstrate how to run a basic differential abundance analysis using multinomial regression via songbird. Then we will show how to interpret the underlying differentials estimated from songbird.
 
 
-## Setup
+## 3. Setup
 We'll be using the moving picture tutorial data for demonstration.  If you haven't already, download those files using the following commands.
 
 Download Feature Table
-`wget https://docs.qiime2.org/2019.7/data/tutorials/moving-pictures/table.qza`
+`wget https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/otus_nt.qza?raw=true`
 
 Download Sample metadata
-`wget https://data.qiime2.org/2019.7/tutorials/moving-pictures/sample_metadata.tsv`
+`wget https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/sample-metadata.txt`
 
 Download Taxonomy
-`wget https://docs.qiime2.org/2019.7/data/tutorials/moving-pictures/taxonomy.qza`
+`wget https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true`
 
 
-## Running Songbird
+## 4. Running Songbird
 
-Once the tables are downloaded, we can now run the basic multinomial regression command
+Once the files are downloaded, we can now run the basic multinomial regression command
 
 ```
 qiime songbird multinomial \
-	--i-table table.qza \
+	--i-table otus_nt.qza \
 	--m-metadata-file sample-metadata.txt \
-	--p-formula "subject + body_site" \
+	--p-formula "Depth + C(Pseudo)" \
 	--p-epochs 10000 \
+	--p-training-column Testing \
 	--p-summary-interval 1 \
-	--o-differentials differentials.qza \
-	--o-regression-stats regression-stats.qza \
-	--o-regression-biplot regression-biplot.qza
+	--output-dir microbe_differentials
+
+
 ```
 
+There are couple of important things to note here.  First, we used `--p-training-column Testing` to specify the hold out samples.
+In this case, we excluded samples from one patient to serve as cross validation.  These samples were excluded when fitting the model,
+to be used later to evaluate predictive accuracy.  Second, we specified `--p-formula "Depth + C(Pseudo)"` to investigate relationships to
+`Depth` and `Pseudo`.  `Pseudo` is a categorical variable, which is why we used `C()` to mark it as categorical.
+`Depth` is a continuously valued variable, negating the need to use the `C()` decorator.
 
+The
 
 ```
 qiime songbird summarize-single \
-	--i-regression-stats regression-stats.qza \
-	--o-visualization regression-summary.qzv
+	--i-regression-stats microbe_differentials/regression-stats.qza \
+	--o-visualization microbe_differentials/regression-summary.qzv
 ```
 
 The `regression-summary.qzv` can be downloaded and directly visualized in (view.qiime2.org)[https://view.qiime2.org/].
@@ -98,7 +103,36 @@ qiime tools export differentials.qza
 
 The resulting text file can be viewed in your favorite spreadsheet program.
 
-Finally, this differential abundance analysis can be readily visualized using qurro
+
+To access model fit, it is recommended to try to run a baseline model.  This baseline model is generally a very simple
+model, usually a model with fewer covariates.  Here, we will run a model with just the intercept.
+
+```
+qiime songbird multinomial \
+	--i-table otus_nt.qza \
+	--m-metadata-file sample-metadata.txt \
+	--p-formula "1" \
+	--p-epochs 10000 \
+	--p-training-column Testing \
+	--p-summary-interval 1 \
+	--output-dir microbe_baseline_differentials
+
+```
+
+We can now compare the baseline model to the previous model we built.
+
+```
+qiime songbird summarize-paired \
+	--i-regression-stats microbe_differentials/regression-stats.qza \
+	--i-baseline-stats microbe_baseline_differentials/regression-stats.qza \
+	--o-visualization microbe_differentials/regression-summary.qzv
+```
+
+The obvious trend is that the baseline has a much higher cross-validation error compared to the previous model.
+Furthermore, there is a _Q<sup>2<\sup>_ value - this can be interpreted similarly to _R<sup>2<\sup>_.
+The _Q<sup>2<\sup>_ value measures the error in the samples that we held out for cross validation.
+
+Once we are happy with our model, the estimated differentials can be readily visualized using qurro
 
 ```
 qiime qurro differential-plot \
@@ -112,7 +146,7 @@ qiime qurro differential-plot \
 The `differentials-viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
 
 
-## Considerations
+## 4. Considerations
 
 The workflow presented here is designed to be easy to understand and use.  However, note that there are still limitations.
 First, while we can pick pairs of microbes of interest, intelligently choosing interesting microbes is still a challenging task.
@@ -123,10 +157,13 @@ Furthermore, differential abundance is not a replacement for beta diversity - if
 Finally, the multinomial model does not account for overdispersion, so some of the differentials, particularly low abundance taxa maybe still unreliable.
 
 
-## Other tools
+## 5. Other tools
 
 It is worth noting that differentials can be properly computed by many other differential abundance tools such as aldex2, corncob and DESeq2.  The main question up for debate is whether or not microbe can be detected to be significantly changed or not.
 
-## References
+## 6. References
+
+See [songbird documentation](https://github.com/biocore/songbird) for more information.
+
 
 Morton, J.T., Marotz, C., Washburne, A., Silverman, J., Zaramela, L.S., Edlund, A., Zengler, K. and Knight, R., 2019. Establishing microbial composition measurement standards with reference frames. Nature communications, 10(1), p.2719.
