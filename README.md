@@ -1,15 +1,15 @@
 # q2stats-workshops
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mortonjt/q2stats-workshops/4b239a50be3553248eb9d6823cf227d6393e958b)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/mortonjt/q2stats-workshops.git/cfb5b1deb3e88d0380ac3f2dfddc9b22faed4d01)
 
 
 This repository is designed as a resource for microbial ecologist for a focus on statistical methodologies available in qiime2.
 
 Much of the structure of this repository is inspired by [An-Introduction-To-Applied-Bioinformatics](https://github.com/applied-bioinformatics/An-Introduction-To-Applied-Bioinformatics).
 
-# Installation
+# How should I run this?
+These analyses are designed to be read and interactively run.  To run these notebooks, click on the red Binder link above and navigate to the terminal option under the pulldown on the upper right corner.  The tutorial commands can be directly executed in the terminal.
 
-These analyses are designed to be read and interactively run.  To run these notebooks, click on the red Binder link above and navigate to the lessons tab.
+# Local installation
 These notebooks can also be downloaded and run locally.  To do that run the following commands
 
 ```
@@ -22,6 +22,7 @@ source activate workshop-env
 The notebooks then can be run via
 
 ```
+pip install ipymd
 ipymd --from markdown --to notebook lessons/*.md
 jupyter notebook
 ```
@@ -31,7 +32,7 @@ jupyter notebook
 These notes are designed to serve as a platform to better understand underlying statistical concepts. Here, we will discuss some of the caveats behind beta-diversity, differential abundance in addition to some emerging ideas on how to perform multiomics analyses (with an emphasis on microbe-metabolite interactions).
 
 ## What are the prerequisites?
-These notes already assume that you have some background knowledge in qiime2.
+These notes already assume that you have some background knowledge in [qiime2](https://qiime2.org/).
 This includes understanding
  - How to install qiime2 and run commands in the commandline
  - How microbial features are determined - either through closed reference OTU-picking or denoising techniques such as DADA2 and Deblur.
