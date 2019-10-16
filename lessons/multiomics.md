@@ -23,6 +23,3 @@ Pull out rank heatmaps
 Pull out paired heatmaps
 
 Shout out to mixomics and other techniques
-
-
-
