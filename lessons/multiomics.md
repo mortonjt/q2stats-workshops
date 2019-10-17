@@ -70,7 +70,7 @@ qiime emperor biplot \
 	--o-visualization emperor.qzv
 ```
 
-The `emperor.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].  Here points are representing molecules and arrows represent microbes.  The distances between points represents the co-occurrence strength between molecules and distances between arrows represents the co-occurrence strength between microbes. The directionality and strength of the arrows can be used to explain the variance of the metabolite due to specific microbes. The drop down menus can be utilized to color the microbes and metabolites acrossing to their annotations as well as their differentials.  One can also double click on the points or arrows to identify microbes or molecules of interest.
+The `emperor.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).  Here points are representing molecules and arrows represent microbes.  The distances between points represents the co-occurrence strength between molecules and distances between arrows represents the co-occurrence strength between microbes. The directionality and strength of the arrows can be used to explain the variance of the metabolite due to specific microbes. The drop down menus can be utilized to color the microbes and metabolites acrossing to their annotations as well as their differentials.  One can also double click on the points or arrows to identify microbes or molecules of interest.
 
 To further explore these iteractions, paired heatmaps of the microbe and metabolite abundances can be made to show how well the metabolite profiles match the microbe profiles.
 We will highlight two microbes, namely Pseudomonas aeroginosa and Streptococcus, whose sequences we will copy from the Emperor clipboard.  The following paired heatmap command can be run
@@ -90,4 +90,4 @@ qiime mmvec paired-heatmap \
   --o-visualization paired-heatmap-top2.qzv
 ```
 
-The `paired-heatmap-top2.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/]. Here, we are only visualizing the abundances of 2 microbes, but are pulling out the top 100 metabolites associated with these microbes as predicted from the conditional probabilities.
+The `paired-heatmap-top2.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/). Here, we are only visualizing the abundances of 2 microbes, but are pulling out the top 100 metabolites associated with these microbes as predicted from the conditional probabilities.

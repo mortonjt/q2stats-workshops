@@ -90,7 +90,7 @@ qiime songbird summarize-single \
 	--o-visualization regression_summary.qzv
 ```
 
-The `regression-summary.qzv` can be downloaded and directly visualized in (view.qiime2.org)[https://view.qiime2.org/].
+The `regression-summary.qzv` can be downloaded and directly visualized in [view.qiime2.org](https://view.qiime2.org/).
 The top plot corresponds to cross-validation accuracy.  The bottom plot corresponds to overall model fit.
 
 The raw differentials can be viewed as a table using the following command.
@@ -101,7 +101,7 @@ qiime metadata tabulate \
 	--o-visualization differentials_viz.qzv
 ```
 
-The `differentials_viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
+The `differentials_viz.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).
 This applies to every file that has a `.qzv` extension.
 
 In addition, the differentials can be unpacked as follows
@@ -154,7 +154,7 @@ qiime qurro differential-plot \
 	--o-visualization qurro_viz.qzv
 ```
 
-The `differentials-viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
+The `differentials-viz.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).
 
 
 ## 4. Considerations
