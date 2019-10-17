@@ -153,10 +153,10 @@ Once we are happy with our model, the estimated differentials can be readily vis
 
 ```
 qiime qurro differential-plot \
-	--i-ranks differentials.qza \
-	--i-table table.qza \
-	--m-sample-metadata sample-metadata.txt \
-	--m-feature-metadata taxonomy.tsv \
+	--i-ranks microbe_differentials/differentials.qza \
+	--i-table otus_nt.qza \
+	--m-sample-metadata-file sample-metadata.txt \
+	--m-feature-metadata-file taxonomy.tsv \
 	--o-visualization qurro_viz.qzv
 ```
 
