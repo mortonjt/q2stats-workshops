@@ -15,7 +15,7 @@ If there is a major perturbation, and we again count the microbes, there are mul
 
 ![](../img/rank-equations1.png)
 
-From sequencing we can measure the proportions _p<sub>A<\sub>_ and _p<sub>B<\sub>_, but in the majority of experiments, the total abundances _N<sub>A<\sub>_ and _N<sub>B<\sub>_ are inaccessible.  Due to this, the ratio _N<sub>A<\sub>_ / _N<sub>B<\sub>_ confounds our inference to determine if a microbe has changed or not.
+From sequencing we can measure the proportions _p<sub>A</sub>_ and _p<sub>B</sub>_, but in the majority of experiments, the total abundances _N<sub>A</sub>_ and _N<sub>B</sub>_ are inaccessible.  Due to this, the ratio _N<sub>A</sub>_ / _N<sub>B</sub>_ confounds our inference to determine if a microbe has changed or not.
 
 In essence, it is not possible to infer absolute changes from relative data.
 
@@ -146,8 +146,8 @@ qiime songbird summarize-paired \
 ```
 
 The obvious trend is that the baseline has a much higher cross-validation error compared to the previous model.
-Furthermore, there is a _Q<sup>2<\sup>_ value - this can be interpreted similarly to _R<sup>2<\sup>_.
-The _Q<sup>2<\sup>_ value measures the error in the samples that we held out for cross validation.
+Furthermore, there is a _Q<sup>2</sup>_ value - this can be interpreted similarly to _R<sup>2</sup>_.
+The _Q<sup>2</sup>_ value measures the error in the samples that we held out for cross validation.
 
 Once we are happy with our model, the estimated differentials can be readily visualized using qurro
 
