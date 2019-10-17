@@ -38,7 +38,7 @@ More information these concepts can be found in our paper [here](https://www.nat
 In this tutorial, we will first demonstrate how to run a basic differential abundance analysis using multinomial regression via songbird. Then we will show how to interpret the underlying differentials estimated from songbird.
 
 
-## 3. Setup
+## 2. Setup
 We'll be using the cystic fibrosis data from this [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6157970/) for demonstration.
 First create a new create a new directory and move into it
 
@@ -58,8 +58,9 @@ Download Sample metadata
 Download Taxonomy
 `curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true > taxonomy.tsv`
 
+The feature table and sample metadata can be found in [Qiita](https://qiita.ucsd.edu/study/description/10863).
 
-## 4. Running Songbird
+## 3. Running Songbird
 
 Once the files are downloaded, we can now run the basic multinomial regression command
 
@@ -81,7 +82,7 @@ to be used later to evaluate predictive accuracy.  Second, we specified `--p-for
 `Depth` and `Pseudo`.  `Pseudo` is a categorical variable, which is why we used `C()` to mark it as categorical.
 `Depth` is a continuously valued variable, negating the need to use the `C()` decorator.
 
-The
+The model fit can be summarized with the following command.
 
 ```
 qiime songbird summarize-single \
@@ -101,6 +102,7 @@ qiime metadata tabulate \
 ```
 
 The `differentials_viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
+This applies to every file that has a `.qzv` extension.
 
 In addition, the differentials can be unpacked as follows
 
