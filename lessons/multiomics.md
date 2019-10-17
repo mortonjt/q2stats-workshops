@@ -21,10 +21,14 @@ First make sure that you are in the `cystic-fibrosis-tutorial` folder created in
 Then download the tutorial files through the following commands
 
 Download Feature Table
-`curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/lcms_nt.qza?raw=true > lcms_nt.qza`
+```
+curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/lcms_nt.qza?raw=true > lcms_nt.qza
+```
 
 Download Metabolite Annotations
-`curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/metabolite-metadata.txt > metabolite-metadata.txt`
+```
+curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/metabolite-metadata.txt > metabolite-metadata.txt
+```
 
 The metabolite bucket table and metabolite annotations can be found on [GNPS](https://gnps.ucsd.edu/ProteoSAFe/status.jsp?task=34d825dbf4e9466e81d809faf814995b) (Global Natural Products Social NEtworking).
 

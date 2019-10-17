@@ -50,13 +50,19 @@ cd cystic-fibrosis-tutorial
 Download the tutorial files using the following commands.
 
 Download Feature Table
-`curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/otus_nt.qza?raw=true > otus_nt.qza`
+```
+curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/otus_nt.qza?raw=true > otus_nt.qza
+```
 
 Download Sample metadata
-`curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/sample-metadata.txt > sample-metadata.txt`
+```
+curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/sample-metadata.txt > sample-metadata.txt
+```
 
 Download Taxonomy
-`curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true > taxonomy.tsv`
+```
+curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true > taxonomy.tsv
+```
 
 The feature table and sample metadata can be found in [Qiita](https://qiita.ucsd.edu/study/description/10863).
 
