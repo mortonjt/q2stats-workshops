@@ -58,11 +58,20 @@ qiime mmvec paired-omics \
 	--p-epochs 100 \
 	--p-summary-interval 1 \
 	--p-training-column Testing \
-	--output-dir mmvec_results
+	--output-dir mmvec_results \
 	--verbose
 ```
 
-Once this is complete, you should see two different files under the `mmvec_results` folder, `conditional_biplot.qza` and `conditionals.qza`.  `conditionals.qza` contains the microbe-metabolite conditional probabilities estimated from mmvec.  `conditional_biplot.qza` contains the factorized conditional probability matrix that can be visualized as an ordination.  This biplot can allow for rapid interpretation of the global microbe-metabolite patterns apparent in this dataset.
+Once this is complete, you should see two different files under the `mmvec_results` folder, `conditional_biplot.qza` and `conditionals.qza`.  `conditionals.qza` contains the microbe-metabolite conditional probabilities estimated from mmvec.  These conditional probabilities can be viewed with `qiime metadata tabulate` as follows.
+
+```
+qiime metadata tabulate \
+	--m-input-file mmvec_results/conditionals.qza \
+	--o-visualization conditionals-viz.qzv
+```
+Note that these are log transformed conditional probabilities (centered around zero).  One can sort the columns to identify metabolites most likely to be present in the presence of a specific microbe.
+
+`conditional_biplot.qza` contains the factorized conditional probability matrix that can be visualized as an ordination.  This biplot can allow for rapid interpretation of the global microbe-metabolite patterns apparent in this dataset.
 
 We can create an interactive biplot visualization in Emperor with the following command.
 
@@ -71,6 +80,7 @@ qiime emperor biplot \
 	--i-biplot conditional_biplot.qza \
 	--m-sample-metadata-file metabolite-metadata.txt metabolite_differentials/differentials.qza \
 	--m-feature-metadata-file taxonomy.tsv microbe_differentials/differentials.qza \
+	--p-number-of-features 50 \
 	--o-visualization emperor.qzv
 ```
 
@@ -78,6 +88,7 @@ The `emperor.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/). 
 
 To further explore these iteractions, paired heatmaps of the microbe and metabolite abundances can be made to show how well the metabolite profiles match the microbe profiles.
 We will highlight two microbes, namely Pseudomonas aeroginosa and Streptococcus, whose sequences we will copy from the Emperor clipboard.  The following paired heatmap command can be run
+
 ```
 qiime mmvec paired-heatmap \
   --i-ranks ranks.qza \
