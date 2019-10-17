@@ -11,11 +11,11 @@ Consider the example below
 ![](../img/composition.png)
 
 In the left environment we don't observe the entire environment, but we can count the number of blue and orange microbes.
-If there is a major perturbation, and we again count the microbes, there are multiple possibilities that could have explained the difference of proportions between the two environments. One possibility is that the number of blue microbes decreased.  Another possibility is that both the number of blue and orange microbes increased.  The reason behind this confusion is because we are missing information about the total abundance.  More concretely, if we have environment $A = (a_1, ... a_D)$ with proportions from $D$ taxa and the same environment after perturbation $B = (b_1, ... b_D)$, then the following holds.
+If there is a major perturbation, and we again count the microbes, there are multiple possibilities that could have explained the difference of proportions between the two environments. One possibility is that the number of blue microbes decreased.  Another possibility is that both the number of blue and orange microbes increased.  The reason behind this confusion is because we are missing information about the total abundance.  More concretely, if we have environment *A = (a<sub>1</sub>, ... a<sub>D</sub>)* with proportions from *D* taxa and the same environment after perturbation *B = (b<sub>1</sub>, ... b<sub>D</sub>)*, then the following holds.
 
 ![](../img/rank-equations1.png)
 
-From sequencing we can measure the proportions _p<sub>A<\sub>_ and _p<sub>B<\sub>_, but in the majority of experiments, the total abundances _N<sub>A<\sub>_ and _N<sub>B<\sub>_ are inaccessible.  Due to this, the ratio _N<sub>A<\sub>_ / _N<sub>B<\sub>_ confounds our inference to determine if a microbe has changed or not.
+From sequencing we can measure the proportions _p<sub>A</sub>_ and _p<sub>B</sub>_, but in the majority of experiments, the total abundances _N<sub>A</sub>_ and _N<sub>B</sub>_ are inaccessible.  Due to this, the ratio _N<sub>A</sub>_ / _N<sub>B</sub>_ confounds our inference to determine if a microbe has changed or not.
 
 In essence, it is not possible to infer absolute changes from relative data.
 
@@ -146,17 +146,17 @@ qiime songbird summarize-paired \
 ```
 
 The obvious trend is that the baseline has a much higher cross-validation error compared to the previous model.
-Furthermore, there is a _Q<sup>2<\sup>_ value - this can be interpreted similarly to _R<sup>2<\sup>_.
-The _Q<sup>2<\sup>_ value measures the error in the samples that we held out for cross validation.
+Furthermore, there is a _Q<sup>2</sup>_ value - this can be interpreted similarly to _R<sup>2</sup>_.
+The _Q<sup>2</sup>_ value measures the error in the samples that we held out for cross validation.
 
 Once we are happy with our model, the estimated differentials can be readily visualized using qurro
 
 ```
 qiime qurro differential-plot \
-	--i-ranks differentials.qza \
-	--i-table table.qza \
-	--m-sample-metadata sample-metadata.txt \
-	--m-feature-metadata taxonomy.tsv \
+	--i-ranks microbe_differentials/differentials.qza \
+	--i-table otus_nt.qza \
+	--m-sample-metadata-file sample-metadata.txt \
+	--m-feature-metadata-file taxonomy.tsv \
 	--o-visualization qurro_viz.qzv
 ```
 
