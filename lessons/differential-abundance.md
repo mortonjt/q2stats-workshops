@@ -39,16 +39,24 @@ In this tutorial, we will first demonstrate how to run a basic differential abun
 
 
 ## 3. Setup
-We'll be using the moving picture tutorial data for demonstration.  If you haven't already, download those files using the following commands.
+We'll be using the cystic fibrosis data from this [paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6157970/) for demonstration.
+First create a new create a new directory and move into it
+
+```
+mkdir cystic-fibrosis-tutorial
+cd cystic-fibrosis-tutorial
+```
+
+Download the tutorial files using the following commands.
 
 Download Feature Table
-`wget https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/otus_nt.qza?raw=true`
+`curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/otus_nt.qza?raw=true > otus_nt.qza`
 
 Download Sample metadata
-`wget https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/sample-metadata.txt`
+`curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/sample-metadata.txt > sample-metadata.txt`
 
 Download Taxonomy
-`wget https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true`
+`curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true > taxonomy.tsv`
 
 
 ## 4. Running Songbird
@@ -59,13 +67,12 @@ Once the files are downloaded, we can now run the basic multinomial regression c
 qiime songbird multinomial \
 	--i-table otus_nt.qza \
 	--m-metadata-file sample-metadata.txt \
-	--p-formula "Depth + C(Pseudo)" \
-	--p-epochs 10000 \
+	--p-formula "depth + C(Pseudo)" \
+	--p-epochs 500 \
 	--p-training-column Testing \
 	--p-summary-interval 1 \
-	--output-dir microbe_differentials
-
-
+	--output-dir microbe_differentials \
+	--verbose
 ```
 
 There are couple of important things to note here.  First, we used `--p-training-column Testing` to specify the hold out samples.
@@ -78,8 +85,8 @@ The
 
 ```
 qiime songbird summarize-single \
-	--i-regression-stats microbe_differentials/regression-stats.qza \
-	--o-visualization microbe_differentials/regression-summary.qzv
+	--i-regression-stats microbe_differentials/regression_stats.qza \
+	--o-visualization regression_summary.qzv
 ```
 
 The `regression-summary.qzv` can be downloaded and directly visualized in (view.qiime2.org)[https://view.qiime2.org/].
@@ -89,19 +96,21 @@ The raw differentials can be viewed as a table using the following command.
 
 ```
 qiime metadata tabulate \
-	--m-input-file differentials.qza \
-	--o-visualization differentials-viz.qzv
+	--m-input-file microbe_differentials/differentials.qza \
+	--o-visualization differentials_viz.qzv
 ```
 
-The `differentials-viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
+The `differentials_viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
 
 In addition, the differentials can be unpacked as follows
 
 ```
-qiime tools export differentials.qza
+qiime tools export \
+	--input-path microbe_differentials/differentials.qza \
+	--output-path microbe_differentials/diffs
 ```
 
-The resulting text file can be viewed in your favorite spreadsheet program.
+The resulting text file under `microbe_differentials/diffs` can be viewed in your favorite spreadsheet program.
 
 
 To access model fit, it is recommended to try to run a baseline model.  This baseline model is generally a very simple
@@ -112,20 +121,20 @@ qiime songbird multinomial \
 	--i-table otus_nt.qza \
 	--m-metadata-file sample-metadata.txt \
 	--p-formula "1" \
-	--p-epochs 10000 \
+	--p-epochs 500 \
 	--p-training-column Testing \
 	--p-summary-interval 1 \
-	--output-dir microbe_baseline_differentials
-
+	--output-dir microbe_baseline_differentials \
+	--verbose
 ```
 
 We can now compare the baseline model to the previous model we built.
 
 ```
 qiime songbird summarize-paired \
-	--i-regression-stats microbe_differentials/regression-stats.qza \
-	--i-baseline-stats microbe_baseline_differentials/regression-stats.qza \
-	--o-visualization microbe_differentials/regression-summary.qzv
+	--i-regression-stats microbe_differentials/regression_stats.qza \
+	--i-baseline-stats microbe_baseline_differentials/regression_stats.qza \
+	--o-visualization paired_regression_summary.qzv
 ```
 
 The obvious trend is that the baseline has a much higher cross-validation error compared to the previous model.
@@ -140,7 +149,7 @@ qiime qurro differential-plot \
 	--i-table table.qza \
 	--m-sample-metadata sample-metadata.txt \
 	--m-feature-metadata taxonomy.tsv \
-	--o-visualization qurro-viz.qzv
+	--o-visualization qurro_viz.qzv
 ```
 
 The `differentials-viz.qzv` can be viewed in (view.qiime2.org)[https://view.qiime2.org/].
