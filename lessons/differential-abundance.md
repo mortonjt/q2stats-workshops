@@ -11,7 +11,7 @@ Consider the example below
 ![](../img/composition.png)
 
 In the left environment we don't observe the entire environment, but we can count the number of blue and orange microbes.
-If there is a major perturbation, and we again count the microbes, there are multiple possibilities that could have explained the difference of proportions between the two environments. One possibility is that the number of blue microbes decreased.  Another possibility is that both the number of blue and orange microbes increased.  The reason behind this confusion is because we are missing information about the total abundance.  More concretely, if we have environment $A = (a_1, ... a_D)$ with proportions from $D$ taxa and the same environment after perturbation $B = (b_1, ... b_D)$, then the following holds.
+If there is a major perturbation, and we again count the microbes, there are multiple possibilities that could have explained the difference of proportions between the two environments. One possibility is that the number of blue microbes decreased.  Another possibility is that both the number of blue and orange microbes increased.  The reason behind this confusion is because we are missing information about the total abundance.  More concretely, if we have environment *A = (a<sub>1</sub>, ... a<sub>D</sub>)* with proportions from *D* taxa and the same environment after perturbation *B = (b<sub>1</sub>, ... b<sub>D</sub>)*, then the following holds.
 
 ![](../img/rank-equations1.png)
 
