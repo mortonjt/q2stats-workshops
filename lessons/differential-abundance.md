@@ -90,9 +90,9 @@ cd microbe_differentials
 ```
 
 #####  Output artifacts:
-`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Favbl3uwhg4sw4fu%2Fdifferentials.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/avbl3uwhg4sw4fu/differentials.qza?dl=0)
+`differentials.qza`  [download](https://www.dropbox.com/s/avbl3uwhg4sw4fu/differentials.qza?dl=0)
 
-`regression_stats.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fm55q8mv2gh6zrfi%2Fregression_stats.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/m55q8mv2gh6zrfi/regression_stats.qza?dl=0)
+`regression_stats.qza` [download](https://www.dropbox.com/s/m55q8mv2gh6zrfi/regression_stats.qza?dl=0)
 
 If you downloading, make sure to return back to the original folder by running `cd -`.
 
@@ -159,9 +159,9 @@ cd microbe_baseline_differentials
 
 
 #####  Output artifacts:
-`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F415cn6jfgty18k1%2Fdifferentials.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/415cn6jfgty18k1/differentials.qza?dl=0)
+`differentials.qza` [download](https://www.dropbox.com/s/415cn6jfgty18k1/differentials.qza?dl=0)
 
-`regression_stats.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Ffw0bm6dhqtslhj7%2Fregression_stats.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/fw0bm6dhqtslhj7/regression_stats.qza?dl=0)
+`regression_stats.qza` [download](https://www.dropbox.com/s/fw0bm6dhqtslhj7/regression_stats.qza?dl=0)
 
 If you downloading, make sure to return back to the original folder by running `cd -`.
 

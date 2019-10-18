@@ -54,9 +54,9 @@ cd metabolite_differentials
 ```
 
 #####  Output artifacts:
-`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fpmlk3bdczmt6r19%2Fdifferentials.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/pmlk3bdczmt6r19/differentials.qza?dl=0)
+`differentials.qza` [download](https://www.dropbox.com/s/pmlk3bdczmt6r19/differentials.qza?dl=0)
 
-`regression_stats.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fprxj5zgi5otaisx%2Fregression_stats.qza%3Fdl%3D1) [download](https://www.dropbox.com/s/prxj5zgi5otaisx/regression_stats.qza?dl=0)
+`regression_stats.qza` [download](https://www.dropbox.com/s/prxj5zgi5otaisx/regression_stats.qza?dl=0)
 
 
 If you downloading, make sure to return back to the original folder by running `cd -`.
@@ -84,9 +84,9 @@ cd mmvec_results
 ```
 
 #####  Output artifacts:
-`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fpxmbbftcg6d6p4v%2Fconditionals.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/pxmbbftcg6d6p4v/conditionals.qza?dl=0)
+`differentials.qza`  [download](https://www.dropbox.com/s/pxmbbftcg6d6p4v/conditionals.qza?dl=0)
 
-`conditional_biplot.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fwzzcrycaijw99tu%2Fconditional_biplot.qza%3Fdl%3D1) [download](https://www.dropbox.com/s/wzzcrycaijw99tu/conditional_biplot.qza?dl=0)
+`conditional_biplot.qza` [download](https://www.dropbox.com/s/wzzcrycaijw99tu/conditional_biplot.qza?dl=0)
 
 If you downloading, make sure to return back to the original folder by running `cd -`.
 
