@@ -18,6 +18,24 @@ The algorithm mmvec (microbe-metabolite vectors) attempts to learn how to factor
 
 First make sure that you are in the `cystic-fibrosis-tutorial` folder created in the [differential abundance tutorial](https://github.com/mortonjt/q2stats-workshops/blob/master/lessons/differential-abundance.md#2-setup)
 
+If you are starting from scratch, redownload the following files
+
+Download Feature Table
+```
+curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/otus_nt.qza?raw=true > otus_nt.qza
+```
+
+Download Sample metadata
+```
+curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/sample-metadata.txt > sample-metadata.txt
+```
+
+Download Taxonomy
+```
+curl -sL https://github.com/mortonjt/q2stats-workshops/blob/master/data/oxygen-cf/taxonomy.tsv?raw=true > taxonomy.tsv
+```
+
+
 Then download the tutorial files through the following commands
 
 Download Feature Table
@@ -29,6 +47,7 @@ Download Metabolite Annotations
 ```
 curl -sL https://raw.githubusercontent.com/mortonjt/q2stats-workshops/master/data/oxygen-cf/metabolite-metadata.txt > metabolite-metadata.txt
 ```
+
 
 The metabolite bucket table and metabolite annotations can be found on [GNPS](https://gnps.ucsd.edu/ProteoSAFe/status.jsp?task=34d825dbf4e9466e81d809faf814995b) (Global Natural Products Social NEtworking).
 
@@ -102,7 +121,6 @@ qiime emperor biplot \
 	--m-sample-metadata-file metabolite-metadata.txt \
 	--m-sample-metadata-file metabolite_differentials/differentials.qza \
 	--m-feature-metadata-file taxonomy.tsv \
-	--m-feature-metadata-file microbe_differentials/differentials.qza \
 	--p-number-of-features 50 \
 	--p-ignore-missing-samples \
 	--o-visualization emperor.qzv
