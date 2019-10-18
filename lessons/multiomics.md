@@ -55,7 +55,6 @@ qiime mmvec paired-omics \
 	--i-microbes otus_nt.qza \
 	--i-metabolites lcms_nt.qza \
 	--m-metadata-file sample-metadata.txt \
-	--p-epochs 100 \
 	--p-summary-interval 1 \
 	--p-training-column Testing \
 	--output-dir mmvec_results \
@@ -77,10 +76,13 @@ We can create an interactive biplot visualization in Emperor with the following 
 
 ```
 qiime emperor biplot \
-	--i-biplot conditional_biplot.qza \
-	--m-sample-metadata-file metabolite-metadata.txt metabolite_differentials/differentials.qza \
-	--m-feature-metadata-file taxonomy.tsv microbe_differentials/differentials.qza \
+	--i-biplot mmvec_results/conditional_biplot.qza \
+	--m-sample-metadata-file metabolite-metadata.txt \
+	--m-sample-metadata-file metabolite_differentials/differentials.qza \
+	--m-feature-metadata-file taxonomy.tsv \
+	--m-feature-metadata-file microbe_differentials/differentials.qza \
 	--p-number-of-features 50 \
+	--p-ignore-missing-samples \
 	--o-visualization emperor.qzv
 ```
 
@@ -91,13 +93,13 @@ We will highlight two microbes, namely Pseudomonas aeroginosa and Streptococcus,
 
 ```
 qiime mmvec paired-heatmap \
-  --i-ranks ranks.qza \
+  --i-ranks mmvec_results/conditionals.qza \
   --i-microbes-table otus_nt.qza \
   --i-metabolites-table lcms_nt.qza \
   --m-microbe-metadata-file taxonomy.tsv \
   --m-microbe-metadata-column Taxon \
-  --p-features TACGAAGGGTGCAAGCGTTAATCGGAATTACTGGGCGTAAAGCGCGCGTAGGTGGTTCAGCAAGTTGGATGTGAAATCCCCGGGCTCAACCTGGGAACTGCATCCAAAACTACTGAGCTAGAGTACGGTAGAGGGTGGTGGAATTTCCTG \
-  --p-features TACGTAGGTCCCGAGCGTTGTCCGGATTTATTGGGCGTAAAGCGAGCGCAGGCGGTTAGATAAGTCTGAAGTTAAAGGCTGTGGCTTAACCATAGTAGGCTTTGGAAACTGTTTAACTTGAGTGCAAGAGGGGAGAGTGGAATTCCATGT \
+  --p-features bc23d2ee539bf2f52faf789289af7879 \
+  --p-features 29f6e97a2ed3b8abe26bb45acba8451f \
   --p-top-k-microbes 0 \
   --p-normalize rel_row \
   --p-top-k-metabolites 100 \

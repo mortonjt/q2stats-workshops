@@ -97,6 +97,7 @@ qiime songbird summarize-single \
 ```
 
 The `regression-summary.qzv` can be downloaded and directly visualized in [view.qiime2.org](https://view.qiime2.org/).
+This applies to every file that has a `.qzv` extension.
 The top plot corresponds to cross-validation accuracy.  The bottom plot corresponds to overall model fit.
 
 The raw differentials can be viewed as a table using the following command.
@@ -108,15 +109,7 @@ qiime metadata tabulate \
 ```
 
 The `differentials_viz.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).
-This applies to every file that has a `.qzv` extension.
 
-In addition, the differentials can be unpacked as follows
-
-```
-qiime tools export \
-	--input-path microbe_differentials/differentials.qza \
-	--output-path microbe_differentials/diffs
-```
 
 The resulting text file under `microbe_differentials/diffs` can be viewed in your favorite spreadsheet program.
 
@@ -138,6 +131,7 @@ qiime songbird multinomial \
 
 We can now compare the baseline model to the previous model we built.
 
+
 ```
 qiime songbird summarize-paired \
 	--i-regression-stats microbe_differentials/regression_stats.qza \
@@ -153,10 +147,10 @@ Once we are happy with our model, the estimated differentials can be readily vis
 
 ```
 qiime qurro differential-plot \
-	--i-ranks differentials.qza \
-	--i-table table.qza \
-	--m-sample-metadata sample-metadata.txt \
-	--m-feature-metadata taxonomy.tsv \
+	--i-ranks microbe_differentials/differentials.qza \
+	--i-table otus_nt.qza \
+	--m-sample-metadata-file sample-metadata.txt \
+	--m-feature-metadata-file taxonomy.tsv \
 	--o-visualization qurro_viz.qzv
 ```
 
