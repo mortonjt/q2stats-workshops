@@ -82,11 +82,27 @@ qiime songbird multinomial \
 	--verbose
 ```
 
+If you are downloading these artifacts, make sure to first create the following folder before downloading
+
+```
+mkdir microbe_differentials
+cd microbe_differentials
+```
+
+#####  Output artifacts:
+`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Favbl3uwhg4sw4fu%2Fdifferentials.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/avbl3uwhg4sw4fu/differentials.qza?dl=0)
+
+`regression_stats.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fm55q8mv2gh6zrfi%2Fregression_stats.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/m55q8mv2gh6zrfi/regression_stats.qza?dl=0)
+
+If you downloading, make sure to return back to the original folder by running `cd -`.
+
 There are couple of important things to note here.  First, we used `--p-training-column Testing` to specify the hold out samples.
 In this case, we excluded samples from one patient to serve as cross validation.  These samples were excluded when fitting the model,
 to be used later to evaluate predictive accuracy.  Second, we specified `--p-formula "Depth + C(Pseudo)"` to investigate relationships to
 `Depth` and `Pseudo`.  `Pseudo` is a categorical variable, which is why we used `C()` to mark it as categorical.
 `Depth` is a continuously valued variable, negating the need to use the `C()` decorator.
+
+## 4. Visualizing model fit
 
 The model fit can be summarized with the following command.
 
@@ -95,6 +111,10 @@ qiime songbird summarize-single \
 	--i-regression-stats microbe_differentials/regression_stats.qza \
 	--o-visualization regression_summary.qzv
 ```
+
+#####  Output artifacts:
+`regression_summary.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F432bjl1x7rjuix4%2Fregression_summary.qzv%3Fdl%3D1) | [download](https://www.dropbox.com/s/432bjl1x7rjuix4/regression_summary.qzv?dl=0)
+
 
 The `regression-summary.qzv` can be downloaded and directly visualized in [view.qiime2.org](https://view.qiime2.org/).
 This applies to every file that has a `.qzv` extension.
@@ -108,7 +128,8 @@ qiime metadata tabulate \
 	--o-visualization differentials_viz.qzv
 ```
 
-The `differentials_viz.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).
+#####  Output artifacts:
+`differentials_viz.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F8hzozf8a1cyotqj%2Fdifferentials_viz.qzv%3Fdl%3D1) | [download](https://www.dropbox.com/s/8hzozf8a1cyotqj/differentials_viz.qzv?dl=0)
 
 
 The resulting text file under `microbe_differentials/diffs` can be viewed in your favorite spreadsheet program.
@@ -129,8 +150,22 @@ qiime songbird multinomial \
 	--verbose
 ```
 
-We can now compare the baseline model to the previous model we built.
+If you are downloading these artifacts, make sure to first create the following folder before downloading
 
+```
+mkdir microbe_baseline_differentials
+cd microbe_baseline_differentials
+```
+
+
+#####  Output artifacts:
+`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F415cn6jfgty18k1%2Fdifferentials.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/415cn6jfgty18k1/differentials.qza?dl=0)
+`regression_stats.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Ffw0bm6dhqtslhj7%2Fregression_stats.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/fw0bm6dhqtslhj7/regression_stats.qza?dl=0)
+
+If you downloading, make sure to return back to the original folder by running `cd -`.
+
+
+We can now compare the baseline model to the previous model we built.
 
 ```
 qiime songbird summarize-paired \
@@ -139,11 +174,17 @@ qiime songbird summarize-paired \
 	--o-visualization paired_regression_summary.qzv
 ```
 
+#####  Output artifacts:
+`paired_regression_summary.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F8le8q1312691a2b%2Fpaired_regression_summary.qzv%3Fdl%3D1) | [download]( https://www.dropbox.com/s/8le8q1312691a2b/paired_regression_summary.qzv?dl=0)
+
+
 The obvious trend is that the baseline has a much higher cross-validation error compared to the previous model.
 Furthermore, there is a _Q<sup>2</sup>_ value - this can be interpreted similarly to _R<sup>2</sup>_.
 The _Q<sup>2</sup>_ value measures the error in the samples that we held out for cross validation.
 
-Once we are happy with our model, the estimated differentials can be readily visualized using qurro
+## 5. Visualizing differential microbial taxa
+
+Once we are happy with our model, the estimated differentials can be readily visualized using qurro.
 
 ```
 qiime qurro differential-plot \
@@ -154,25 +195,29 @@ qiime qurro differential-plot \
 	--o-visualization qurro_viz.qzv
 ```
 
-The `differentials-viz.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).
+#####  Output artifacts:
+`qurro_viz.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F9l2zyxiumi6ekbw%2Fqurro_viz.qzv%3Fdl%3D1) | [download](https://www.dropbox.com/s/9l2zyxiumi6ekbw/qurro_viz.qzv?dl=0)
 
+Qurro allows for one to interactively explore the microbial relationships with respect to the differentials and the raw data.  As discussed in the first section, looking at log ratios of taxa is another means to negate the effect of the total biomass.  Qurro allows one to select pairs of microbes of interest, and visualize their log ratios with respect to the covariates of interest.
 
-## 4. Considerations
+See the [qurro documentation](https://github.com/biocore/qurro) for more information on visualization details.
 
-The workflow presented here is designed to be easy to understand and use.  However, note that there are still limitations.
+## 6. Considerations
+
+The workflow presented here is designed to be easy to understand and use.  But it is important to note that this workflow has limitations.
 First, while we can pick pairs of microbes of interest, intelligently choosing interesting microbes is still a challenging task.
 It is still possible have issues with false discovery rate.
 
 Furthermore, differential abundance is not a replacement for beta diversity - if there isn't a notable trend in beta diversity, then one shouldn't expect meaningful results in the differential abundance analysis.
 
-Finally, the multinomial model does not account for overdispersion, so some of the differentials, particularly low abundance taxa maybe still unreliable.
+Finally, the multinomial model does not account for overdispersion, meaning that the model present can estimate the mean abundance of each microbe, but cannot accurately estimate the variance.  As a result, low abundance taxa maybe still unreliable.
 
 
-## 5. Other tools
+## 7. Other tools
 
 It is worth noting that differentials can be properly computed by many other differential abundance tools such as aldex2, corncob and DESeq2.  The main question up for debate is whether or not microbe can be detected to be significantly changed or not.
 
-## 6. References
+## 8. References
 
 See [songbird documentation](https://github.com/biocore/songbird) for more information.
 

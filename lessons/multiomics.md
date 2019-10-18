@@ -46,6 +46,21 @@ qiime songbird multinomial \
 	--verbose
 ```
 
+If you are downloading these artifacts, make sure to first create the following folder before downloading
+
+```
+mkdir metabolite_differentials
+cd metabolite_differentials
+```
+
+#####  Output artifacts:
+`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fpmlk3bdczmt6r19%2Fdifferentials.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/pmlk3bdczmt6r19/differentials.qza?dl=0)
+
+`regression_stats.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fprxj5zgi5otaisx%2Fregression_stats.qza%3Fdl%3D1) [download](https://www.dropbox.com/s/prxj5zgi5otaisx/regression_stats.qza?dl=0)
+
+
+If you downloading, make sure to return back to the original folder by running `cd -`.
+
 # 3. Running mmvec
 
 Now we are ready to run mmvec.  The command is given below
@@ -61,16 +76,23 @@ qiime mmvec paired-omics \
 	--verbose
 ```
 
-Once this is complete, you should see two different files under the `mmvec_results` folder, `conditional_biplot.qza` and `conditionals.qza`.  `conditionals.qza` contains the microbe-metabolite conditional probabilities estimated from mmvec.  These conditional probabilities can be viewed with `qiime metadata tabulate` as follows.
+If you are downloading these artifacts, make sure to first create the following folder before downloading
 
 ```
-qiime metadata tabulate \
-	--m-input-file mmvec_results/conditionals.qza \
-	--o-visualization conditionals-viz.qzv
+mkdir mmvec_results
+cd mmvec_results
 ```
-Note that these are log transformed conditional probabilities (centered around zero).  One can sort the columns to identify metabolites most likely to be present in the presence of a specific microbe.
 
-`conditional_biplot.qza` contains the factorized conditional probability matrix that can be visualized as an ordination.  This biplot can allow for rapid interpretation of the global microbe-metabolite patterns apparent in this dataset.
+#####  Output artifacts:
+`differentials.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fpxmbbftcg6d6p4v%2Fconditionals.qza%3Fdl%3D1) | [download](https://www.dropbox.com/s/pxmbbftcg6d6p4v/conditionals.qza?dl=0)
+
+`conditional_biplot.qza` [view](https://view.qiime2.org/details/?src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fwzzcrycaijw99tu%2Fconditional_biplot.qza%3Fdl%3D1) [download](https://www.dropbox.com/s/wzzcrycaijw99tu/conditional_biplot.qza?dl=0)
+
+If you downloading, make sure to return back to the original folder by running `cd -`.
+
+## 4. Visualizing microbe-metabolite interactions
+
+Once this is complete, you should see two different files under the `mmvec_results` folder, `conditional_biplot.qza` and `conditionals.qza`.  `conditional_biplot.qza` contains the factorized conditional probability matrix that can be visualized as an ordination.  This biplot can allow for rapid interpretation of the global microbe-metabolite patterns apparent in this dataset.
 
 We can create an interactive biplot visualization in Emperor with the following command.
 
@@ -86,7 +108,23 @@ qiime emperor biplot \
 	--o-visualization emperor.qzv
 ```
 
-The `emperor.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/).  Here points are representing molecules and arrows represent microbes.  The distances between points represents the co-occurrence strength between molecules and distances between arrows represents the co-occurrence strength between microbes. The directionality and strength of the arrows can be used to explain the variance of the metabolite due to specific microbes. The drop down menus can be utilized to color the microbes and metabolites acrossing to their annotations as well as their differentials.  One can also double click on the points or arrows to identify microbes or molecules of interest.
+#####  Output artifacts:
+`conditionals-viz.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fkj0v5wwumqd2vdf%2Femperor.qzv%3Fdl%3D1) | [download](https://www.dropbox.com/s/kj0v5wwumqd2vdf/emperor.qzv?dl=0)
+
+Here points are representing molecules and arrows represent microbes.  The distances between points represents the co-occurrence strength between molecules and distances between arrows represents the co-occurrence strength between microbes. The directionality and strength of the arrows can be used to explain the variance of the metabolite due to specific microbes. The drop down menus can be utilized to color the microbes and metabolites acrossing to their annotations as well as their differentials.  One can also double click on the points or arrows to identify microbes or molecules of interest.
+
+`conditionals.qza` contains the microbe-metabolite conditional probabilities estimated from mmvec.  These conditional probabilities can be viewed with `qiime metadata tabulate` as follows.
+
+```
+qiime metadata tabulate \
+	--m-input-file mmvec_results/conditionals.qza \
+	--o-visualization conditionals-viz.qzv
+```
+
+#####  Output artifacts:
+`conditionals-viz.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2F1r34krm1n8pekkt%2Fconditionals-viz.qzv%3Fdl%3D1) | [download](https://www.dropbox.com/s/1r34krm1n8pekkt/conditionals-viz.qzv?dl=0)
+
+Note that these are log transformed conditional probabilities (centered around zero).  One can sort the columns to identify metabolites most likely to be present in the presence of a specific microbe.
 
 To further explore these iteractions, paired heatmaps of the microbe and metabolite abundances can be made to show how well the metabolite profiles match the microbe profiles.
 We will highlight two microbes, namely Pseudomonas aeroginosa and Streptococcus, whose sequences we will copy from the Emperor clipboard.  The following paired heatmap command can be run
@@ -107,4 +145,15 @@ qiime mmvec paired-heatmap \
   --o-visualization paired-heatmap-top2.qzv
 ```
 
-The `paired-heatmap-top2.qzv` can be viewed in [view.qiime2.org](https://view.qiime2.org/). Here, we are only visualizing the abundances of 2 microbes, but are pulling out the top 100 metabolites associated with these microbes as predicted from the conditional probabilities.
+#####  Output artifacts:
+`paired-heatmap-top2.qzv` [view](https://view.qiime2.org/visualization/?type=html&src=https%3A%2F%2Fdl.dropbox.com%2Fs%2Fy4eijy0tkjcsd85%2Fpaired-heatmap-top2.qzv%3Fdl%3D1) | [download](https://www.dropbox.com/s/y4eijy0tkjcsd85/paired-heatmap-top2.qzv?dl=0)
+
+Here, we are only visualizing the abundances of 2 microbes, but are pulling out the top 100 metabolites associated with these microbes as predicted from the conditional probabilities.
+
+## 5. Considerations
+
+The workflow presented here provides a means to try to explore microbe-metabolite relationships.  However, it is imporant to note the limitations of these tools.  First, this framework does not currently provide a means to test global significance - we cannot currently determine if the detected interactions are real or due to noise.  It is critical to first run beta diversity on individual datasets to first determine if there are strong patterns present in the data before attempting multiomics analyses.  It is also worthwhile to check out other techniques such as Canonical correlation analysis and Partial least squares, since these techniques can provide a measure of global fit between two datasets - the [mixomics](http://mixomics.org/) package is a good place to start.
+
+## 6. References
+
+See [mmvec documentation](https://github.com/biocore/mmvec) for more information.
