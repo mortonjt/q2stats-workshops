@@ -58,7 +58,7 @@ qiime songbird multinomial \
 	--i-table lcms_nt.qza \
 	--m-metadata-file sample-metadata.txt \
 	--p-formula "depth + C(Pseudo)" \
-	--p-epochs 500 \
+	--p-epochs 100 \
 	--p-training-column Testing \
 	--p-summary-interval 1 \
 	--output-dir metabolite_differentials \

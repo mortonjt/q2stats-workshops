@@ -75,7 +75,7 @@ qiime songbird multinomial \
 	--i-table otus_nt.qza \
 	--m-metadata-file sample-metadata.txt \
 	--p-formula "depth + C(Pseudo)" \
-	--p-epochs 500 \
+	--p-epochs 100 \
 	--p-training-column Testing \
 	--p-summary-interval 1 \
 	--output-dir microbe_differentials \
@@ -143,7 +143,7 @@ qiime songbird multinomial \
 	--i-table otus_nt.qza \
 	--m-metadata-file sample-metadata.txt \
 	--p-formula "1" \
-	--p-epochs 500 \
+	--p-epochs 100 \
 	--p-training-column Testing \
 	--p-summary-interval 1 \
 	--output-dir microbe_baseline_differentials \
