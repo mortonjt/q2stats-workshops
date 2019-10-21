@@ -15,7 +15,7 @@ These notebooks can also be downloaded and run locally.  To do that run the foll
 
 ```
 git clone https://github.com/mortonjt/q2stats-workshops.git
-cd
+cd q2stats-workshops
 conda env create -n workshop-env -f environment.yml
 source activate workshop-env
 ```
