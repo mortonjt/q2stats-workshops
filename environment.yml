@@ -375,7 +375,7 @@ dependencies:
   - threadpoolctl=2.1.0
   - tk=8.6.10
   - tktable=2.10
-  - tornado=6.0.4
+  - tornado
   - traitlets=4.3.3
   - typing_extensions=3.7.4.2
   - tzlocal=2.1
